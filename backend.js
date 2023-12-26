@@ -22,11 +22,6 @@ app.get("/", function (request, response) {
 //    console.log("Your app is listening on port " + listener.address().port);
 //});
 
-// listen for requests
-const listener = app.listen(3000, function () {
-    console.log("Your app is listening on port " + listener.address().port);
-});
-
 app.post("/databases", async function (request, response) {
 
     console.log(request.body);
@@ -83,4 +78,10 @@ app.post("/databases", async function (request, response) {
     } catch (error) {
         response.json({ message: "error", error });
     }
+});
+
+
+// listen for requests
+const listener = app.listen(3000, function () {
+    console.log("Your app is listening on port " + listener.address().port);
 });
