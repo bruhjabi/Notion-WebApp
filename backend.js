@@ -16,8 +16,14 @@ app.get("/", function (request, response) {
     response.sendFile(__dirname + "/templates/index.html");
 });
 
+
 // listen for requests
-const listener = app.listen(process.env.PORT, function () {
+//const listener = app.listen(process.env.PORT, function () {
+//    console.log("Your app is listening on port " + listener.address().port);
+//});
+
+// listen for requests
+const listener = app.listen(3000, function () {
     console.log("Your app is listening on port " + listener.address().port);
 });
 
