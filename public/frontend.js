@@ -45,7 +45,7 @@ toDoForm.onsubmit = async function (event) {
     notes: notes_
   })
 
-// Make a request to /databases endpoint in backend.js
+// Make a request to /api endpoint in backend.js
   const newDBResponse = await fetch("/api", {
     method: "POST",
     headers: {
