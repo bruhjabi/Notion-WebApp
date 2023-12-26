@@ -17,12 +17,9 @@ app.get("/", function (request, response) {
 });
 
 
-// listen for requests
-//const listener = app.listen(process.env.PORT, function () {
-//    console.log("Your app is listening on port " + listener.address().port);
-//});
 
-app.post("/databases", async function (request, response) {
+
+app.post("/api", async function (request, response) {
 
     console.log(request.body);
     const pageId = process.env.NOTION_PAGE_ID;
@@ -79,6 +76,12 @@ app.post("/databases", async function (request, response) {
         response.json({ message: "error", error });
     }
 });
+
+
+// listen for requests
+//const listener = app.listen(process.env.PORT, function () {
+//    console.log("Your app is listening on port " + listener.address().port);
+//});
 
 
 // listen for requests
