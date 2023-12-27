@@ -7,7 +7,7 @@ const { Client } = require("@notionhq/client");
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
 // <http://expressjs.com/en/starter/static-files.html>
-app.use(express.static("public"));
+app.use(express.static("static"));
 app.use(express.json()) // for parsing application/json
 
 
