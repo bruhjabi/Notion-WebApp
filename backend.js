@@ -12,7 +12,23 @@ app.use(express.json()) // for parsing application/json
 
 
 // <http://expressjs.com/en/starter/basic-routing.html>
-app.get("/", function (request, response) {
+//  Script to gather classes currently in my Notion database
+//  ID: ef87ade324e544ed93fbe55d04e224f7
+//  https://developers.notion.com/reference/post-database-query
+app.get("/", async function (request, response) {
+    try {
+        const response = await notion.databases.query({
+            database_id: "ef87ade3-24e5-44ed-93fbe55d04e224f7"
+        })
+        const len = response.body.results.length;
+        const classesList = [];
+        for (let index = 0; index < len; index++) {
+            classesList[index] = response.body.results[index];
+        }
+        console.log(classesList);
+    } catch (error) {
+        response.json({ message: "error", error });
+    }
     response.sendFile(__dirname + "/templates/index.html");
 });
 

@@ -1,24 +1,3 @@
-//Script to gather classes currently in my Notion database
-//ID: ef87ade324e544ed93fbe55d04e224f7
-//https://developers.notion.com/reference/post-database-query
-
-database_id = "ef87ade324e544ed93fbe55d04e224f7"
-const body = JSON.stringify({
-  database_id: ef87ade324e544ed93fbe55d04e224f7
-})
-const notionClasses = await fetch("https://api.notion.com/v1/databases/${database_id}/query", {
-  method: "POST",
-  headers: {
-    "Authorization": "Bearer $NOTION_API_KEY", 
-    "Notion-Version": '2022-06-28',
-    "Content-Type": "application/json"
-  },
-  body,
-})
-const notionClassesData = await newDBResponse.json()
-console.log(notionClassesData)
-
-
 const appendApiResponse = function (apiResponse, el) {
   console.log(apiResponse)
 
