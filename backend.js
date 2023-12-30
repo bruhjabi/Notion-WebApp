@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const path = require('path');
+
 const express = require("express");
 const app = express();
 // Notion SDK for JavaScript
@@ -9,6 +11,9 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 // <http://expressjs.com/en/starter/static-files.html>
 app.use(express.static("static"));
 app.use(express.json()) // for parsing application/json
+
+app.set('view engine', 'ejs'); // Set EJS as the view engine
+app.set('views', path.join(__dirname, '/templates'));
 
 
 // <http://expressjs.com/en/starter/basic-routing.html>
@@ -27,7 +32,7 @@ app.get("/", async function (request, response) {
             classesList[index] = response.results[index].properties.Name.title[0].plain_text;
         }
         console.log(classesList);
-        response.sendFile(__dirname + "/templates/index.html");
+        response.render(index, {classesList})
     } catch (error) {
         response.json({ message: "error", error });
     }
