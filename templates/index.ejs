@@ -29,7 +29,7 @@
         </p>
         <p>
             Open the Notion page set in your environment variables to see workspace
-            updates in real-time. :)
+            updates in real-time. 
         </p>
 
         <form id="toDoForm" enctype="multipart/form-data">
@@ -37,12 +37,12 @@
             <input type="text" id="taskVal" />
             <label for="classVal">Class</label>
             <select id="classVal">
-                <% classesList.forEach(class => { %>
-                    <option value="<%= class %>"><%= class %></option>
-                <% }); %>
+                <% for(let key in classesList) { %>
+                    <option value="<%- classesList[key] %>"><%- key %></option>
+                <% } %>
             </select>
-            <label for="dueDate">Due Date</label>
-            <input type="date" id="birthday">
+            <label for="dueDateVal">Due Date</label>
+            <input type="date" id="dueDateVal">
             <label for="notesVal">Notes</label>
             <input type="text" id="notesVal" />
             <input type="submit" />
