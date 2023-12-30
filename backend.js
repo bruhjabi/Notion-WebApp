@@ -18,18 +18,19 @@ app.use(express.json()) // for parsing application/json
 app.get("/", async function (request, response) {
     try {
         const response = await notion.databases.query({
-            database_id: "ef87ade3-24e5-44ed-93fbe55d04e224f7"
+            database_id: "ef87ade3-24e5-44ed-93fb-e55d04e224f7"
         })
-        const len = response.body.results.length;
-        const classesList = [];
+        const len = response.results.length;
+        console.log(len);
+        let classesList = [];
         for (let index = 0; index < len; index++) {
-            classesList[index] = response.body.results[index];
+            classesList[index] = response.results[index].properties.Name.title[0].plain_text;
         }
         console.log(classesList);
+        response.sendFile(__dirname + "/templates/index.html");
     } catch (error) {
         response.json({ message: "error", error });
     }
-    response.sendFile(__dirname + "/templates/index.html");
 });
 
 
